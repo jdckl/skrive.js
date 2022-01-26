@@ -1,21 +1,22 @@
 {
   "name": "skrive.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple module to iteratively type characters into DOM elements",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "test": "jest",
     "build": "tsc",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint src/ --fix --ext .js,.jsx,.ts,.tsx",
-
     "prepare": "npm run build",
-    "prepublishOnly" : "npm test && npm run lint",
-    "preversion" : "npm run lint",
-    "version" : "npm run lint:fix && git add -A src",
-    "postversion" : "git push && git push --tags"
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run lint:fix && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
