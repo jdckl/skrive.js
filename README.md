@@ -8,6 +8,11 @@ Nothing fancy, just writes the string to DOM with the given speed. There are pro
 
 Tested with React, but should work with any types of DOM if you can construct **Skrive** with an _Element_.
 
+## Installation
+```sh
+npm i skrive.js
+```
+
 ## Usage
 
 ```js
