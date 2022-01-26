@@ -23,7 +23,7 @@ const elRef = useRef();
 
 // After the element component mounts
 const typer = new Skrive(elRef.current, {
-    typeDelay: 200
+    typeDelay: 180,
     clearBeforeWriting: false
 });
 
@@ -46,7 +46,7 @@ do {
 } while (!finishedProcessing);
 ```  
 
-_And you could probably easily extend this with some CSS magic to suit your case :)_
+_+ you could probably easily extend this with some CSS magic to suit your case :)_
 
 ## Methods
 
