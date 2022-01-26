@@ -10,15 +10,15 @@ class Skrive {
     clearBeforeWriting: boolean;
 
     /** Constructor */
-    constructor (e:Element, opts: { 
+    constructor (e:Element, opts?: { 
         typeDelay?: number,
         clearBeforeWriting?: boolean
     }) {
         if (!e || e instanceof Element === false) throw 'Missing DOM element!';
 
         this.el = e;
-        this.typeDelay = opts.typeDelay ? opts.typeDelay : 180;
-        this.clearBeforeWriting = opts.clearBeforeWriting ? opts.clearBeforeWriting : false;
+        this.typeDelay = opts && opts.typeDelay ? opts.typeDelay : 180;
+        this.clearBeforeWriting = opts && opts.clearBeforeWriting ? opts.clearBeforeWriting : false;
     }
 
     /** Clear the element */
