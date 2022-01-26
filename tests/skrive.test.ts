@@ -34,7 +34,7 @@ describe('Basic functionality testing', () => {
         const t = new Skrive(document.body.querySelectorAll('#container')[0], {})
 
         await t.write('test')
-        await t.write('cleared', true)
+        await t.write('cleared', 200, true)
 
         expect(document.body.querySelectorAll('#container')[0].innerHTML).toBe('cleared');
     })
