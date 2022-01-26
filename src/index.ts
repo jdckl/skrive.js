@@ -29,7 +29,7 @@ class Skrive {
 
     /** Write to element */
     async write (str: string, typeDelay = 180, clearBefore = false) : Promise<Skrive> {
-        if (this.clearBeforeWriting || clearBefore) this.clear();
+        if (clearBefore || this.clearBeforeWriting) this.clear();
 
         const strArray = str.split('');
         for (const [i, char] of strArray.entries()) {
