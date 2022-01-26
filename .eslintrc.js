@@ -1,0 +1,14 @@
+module.exports = {
+    root: true,
+    parser: '@typescript-eslint/parser',
+    plugins: [
+      '@typescript-eslint',
+    ],
+    rules: {
+      '@typescript-eslint/no-empty-interface': 'off'
+    },
+    extends: [
+      'eslint:recommended',
+      'plugin:@typescript-eslint/recommended',
+    ],
+};

@@ -1,0 +1,8 @@
+# Ignore jest coverage folder
+/coverage
+
+# Ignore build
+/lib
+
+# Ignore modules
+node_modules
