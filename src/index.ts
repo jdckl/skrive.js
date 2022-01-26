@@ -11,7 +11,7 @@ class Skrive {
         typeDelay?: number,
         clearBeforeWriting?: boolean
     }) {
-        if (!e || e instanceof Element === false) throw 'Missing DOM element!';
+        if (!e || e instanceof Element === false) throw Error('Missing DOM element!');
 
         this.el = e;
         this.typeDelay = opts && opts.typeDelay ? opts.typeDelay : 180;
@@ -28,13 +28,13 @@ class Skrive {
     sleep = (ms:number) : Promise<void> => new Promise((r) => setTimeout(r, ms))
 
     /** Write to element */
-    async write (str: string, typeDelay = 200, clearBefore = false) : Promise<Skrive> {
+    async write (str: string, typeDelay = 180, clearBefore = false) : Promise<Skrive> {
         if (this.clearBeforeWriting || clearBefore) this.clear();
 
         const strArray = str.split('');
         for (const [i, char] of strArray.entries()) {
             this.el.insertAdjacentHTML('beforeend', char);
-            if (i+1 <= strArray.length) await this.sleep(typeDelay||this.typeDelay);
+            if (i+1 <= strArray.length) await this.sleep(typeDelay!==this.typeDelay ? typeDelay : this.typeDelay);
         }
 
         return this;

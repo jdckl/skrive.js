@@ -8,10 +8,31 @@ describe('Basic functionality testing', () => {
         document.body.innerHTML = '<div id="container"></div>'
         const t = new Skrive(document.body.querySelectorAll('#container')[0])
 
-        t.sleep(200)
+        t.sleep(180)
 
         expect(setTimeout).toHaveBeenCalledTimes(1)
-        expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 200)
+        expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 180)
+
+        expect(t.typeDelay).toBe(180);
+        expect(t.clearBeforeWriting).toBeFalsy();
+    })
+
+    it('should set custom options', () => {
+        document.body.innerHTML = '<div id="container"></div>'
+        const t = new Skrive(document.body.querySelectorAll('#container')[0], {
+            typeDelay: 500,
+            clearBeforeWriting: true
+        })
+
+        expect(t.typeDelay).toBe(500);
+        expect(t.clearBeforeWriting).toBeTruthy();
+    })
+
+    it('should throw an error', () => {
+        expect(() => {
+            // @ts-expect-error
+            new Skrive('test')
+        }).toThrow('Missing DOM element!')
     })
 
     it('should type out "test" into the element', async () => {

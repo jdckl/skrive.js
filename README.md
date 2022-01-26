@@ -54,7 +54,7 @@ _And you could probably easily extend this with some CSS magic to suit your case
 
 | Option | Description |
 | --- | --- |
-| **typeDelay** | The delay between writing the next character. _(default: 200)_ |
+| **typeDelay** | The delay between writing the next character. _(default: 180)_ |
 | **clearBeforeWriting** | Should the DOM elements content be cleared before writing this string to it? _(default: false)_ |
 
 _You can also supply these options on the fly with the **write()** method_
