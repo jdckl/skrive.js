@@ -3,6 +3,7 @@
 # Skrive.js
 
 Super simple ES6 module to iteratively type characters from a string into a DOM element.  
+
 Nothing fancy, just writes the string to DOM with the given speed. There are probably a ton of other typewriter/typer packages, I've abstracted this one from my personal website and figured why not put it out there? It's very small and only does this one thing.
 
 Tested with React, but should work with any types of DOM if you can construct **Skrive** with an _Element_.
