@@ -1,6 +1,3 @@
-/** Wait for x ms */
-export const sleep = (ms:number) : Promise<void> => new Promise((r) => setTimeout(r, ms))
-
 /**
  * Simple module to iteratively type characters into DOM elements
  */
@@ -27,14 +24,17 @@ class Skrive {
         return this;
     }
 
+    /** Wait for an amount of ms */
+    sleep = (ms:number) : Promise<void> => new Promise((r) => setTimeout(r, ms))
+
     /** Write to element */
-    async write (str: string, typeDelay = null, clearBefore = false) : Promise<Skrive> {
+    async write (str: string, typeDelay = 200, clearBefore = false) : Promise<Skrive> {
         if (this.clearBeforeWriting || clearBefore) this.clear();
 
         const strArray = str.split('');
         for (const [i, char] of strArray.entries()) {
             this.el.insertAdjacentHTML('beforeend', char);
-            if (i+1 <= strArray.length) await sleep(typeDelay || this.typeDelay);
+            if (i+1 <= strArray.length) await this.sleep(typeDelay||this.typeDelay);
         }
 
         return this;
