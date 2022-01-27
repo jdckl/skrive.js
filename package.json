@@ -1,6 +1,6 @@
 {
   "name": "skrive.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple module to iteratively type characters into DOM elements",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
