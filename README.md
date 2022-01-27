@@ -31,6 +31,9 @@ const typer = new Skrive(elRef.current, {
 await typer.write('Hello world!'); // Write to the DOM element
 typer.clear(); // Clear the DOM elements content
 
+await typer.write('I will get untyped!');
+await typer.unwrite() // Iteratively remove characters from the end of the content
+
 // ... (more code like assigning your ref)
 ```  
 
@@ -53,6 +56,7 @@ _+ you could probably easily extend this with some CSS magic to suit your case :
 | Method | Description |
 | --- | --- |
 | **write(text:_string_, typeDelay:_number_, clearBeforeWriting:_boolean_)** | Write a given string to the DOM elements content. |
+| **unwrite(typeDelay:_number_)** | Unwrites the element DOM content just like a person backspacing. |
 | **clear()** | Clear the contents of the DOM element. |
 
 ## Options

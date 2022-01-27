@@ -39,6 +39,21 @@ class Skrive {
 
         return this;
     }
+
+    /** Like clear, but unwrites content 1by1 */
+    async unwrite (typeDelay = 180) : Promise<Skrive> {
+        const str = this.el.textContent;
+        if (!str || str.length<=0) throw Error('Nothing to unwrite!');
+
+        const strArray = str.split('');
+        for (let i = strArray.length; i >= 0; i--) {
+            strArray.pop();
+            this.el.innerHTML = strArray.join('');
+            if (i > 0) await this.sleep(typeDelay!==this.typeDelay ? typeDelay : this.typeDelay);
+        }
+
+        return this;
+    }
 }
 
 export default Skrive;

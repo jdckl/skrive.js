@@ -28,7 +28,7 @@ describe('Basic functionality testing', () => {
         expect(t.clearBeforeWriting).toBeTruthy();
     })
 
-    it('should throw an error', () => {
+    it('should throw a "Missing DOM element!" error', () => {
         expect(() => {
             // @ts-expect-error
             new Skrive('test')
@@ -85,6 +85,36 @@ describe('Basic functionality testing', () => {
         await t.clear()
 
         expect(document.body.querySelectorAll('#container')[0].innerHTML).toBe('');
+        expect(sleepMock).toHaveBeenCalledTimes(4);
+    })
+
+    it('should unwrite the element', async () => {
+        document.body.innerHTML = '<div id="container"></div>'
+        const t = new Skrive(document.body.querySelectorAll('#container')[0])
+
+        let sleepMock = jest.spyOn(t, 'sleep');
+            sleepMock.mockResolvedValue();
+
+        await t.write('test')
+        await t.unwrite()
+
+        expect(document.body.querySelectorAll('#container')[0].innerHTML).toBe('');
+        expect(sleepMock).toHaveBeenCalledTimes(8);
+    })
+
+    it('should throw a "Nothing to unwrite!" error', async () => {
+        document.body.innerHTML = '<div id="container"></div>'
+        const t = new Skrive(document.body.querySelectorAll('#container')[0])
+
+        let sleepMock = jest.spyOn(t, 'sleep');
+            sleepMock.mockResolvedValue();
+
+        await t.write('test')
+        t.clear();
+
+        expect(async () => {
+            await t.unwrite()
+        }).rejects.toThrow('Nothing to unwrite!')
         expect(sleepMock).toHaveBeenCalledTimes(4);
     })
 })
