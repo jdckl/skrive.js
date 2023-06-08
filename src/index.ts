@@ -7,7 +7,7 @@ class Skrive {
     clearBeforeWriting: boolean;
 
     /** Constructor */
-    constructor (e:Element, opts?: { 
+    constructor (e?:Element, opts?: { 
         typeDelay?: number,
         clearBeforeWriting?: boolean
     }) {
